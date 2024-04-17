@@ -70,6 +70,13 @@ void EM24::update(AmsData* data)
     }
     if(data->getListType() <= 3)
     {    
+        int32 energyForward = (int32)(data->getActiveImportCounter()*10);
+        Set32bitReg(EnergyForward, energyForward);
+        Set32bitReg(EnergyReverse, (int32)(data->getActiveExportCounter()*10));
+        Set32bitReg(L1EnergyForward, energyForward/3);
+        Set32bitReg(L2EnergyForward, energyForward/3);
+        Set32bitReg(L3EnergyForward, energyForward/3);
+
         int32 ActivePower =  (int32)(data->getActiveImportPower() - data->getActiveExportPower())*10;        
         Set32bitReg(AcPower, ActivePower);
         Set32bitReg(L1P, ActivePower/3);

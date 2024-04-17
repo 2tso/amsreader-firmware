@@ -1245,7 +1245,7 @@ void handleDataSuccess(AmsData* data) {
 	if(saveData) {
 		LittleFS.end();
 	}
-	em24->update(data);
+	em24->update(&meterState);
 }
 
 void printHanReadError(int pos) {
